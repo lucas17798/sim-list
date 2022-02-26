@@ -23,7 +23,10 @@
         </button>
       </div>
       <div>
-        <button  class="icon flex-center" title="置顶">
+        <button v-if="isTop" class="icon flex-center" @click="changeTop" title="取消置顶">
+          <i class="iconfont flex-center icon-thepin-active"></i>
+        </button>
+        <button v-else class="icon flex-center" @click="changeTop" title="置顶">
           <i class="iconfont flex-center icon-thepin"></i>
         </button>
       </div>
@@ -42,24 +45,28 @@
 </template>
 
 <script>
+import {remote} from 'electron'
+
 export default {
   name: "Header",
   data() {
     return {
-
+      currentWindow: remote.getCurrentWindow(),
+      isTop: false,
     }
   },
   mounted() {
-    this.$electron.ipcRenderer.on('alwaysOnTop',(event,data)=>{
-      switch (data) {
-        case 'yes':
-          this.top_title = "取消置顶";
-          break;
-        case 'no':
-          this.top_title = "置顶";
-          break;
+  },
+  methods: {
+    changeTop() {
+      if (this.isTop) {
+        this.currentWindow.setAlwaysOnTop(false);
+        this.isTop = false;
+      } else {
+        this.currentWindow.setAlwaysOnTop(true);
+        this.isTop = true;
       }
-    })
+    }
   }
 }
 </script>
