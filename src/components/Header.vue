@@ -36,7 +36,7 @@
 <!--        </button>-->
 <!--      </div>-->
       <div>
-        <button class="icon flex-center close-window" title="关闭">
+        <button class="icon flex-center close-window" @click="closeWindow" title="关闭">
           <i class="iconfont flex-center icon-close"></i>
         </button>
       </div>
@@ -46,6 +46,7 @@
 
 <script>
 import {remote} from 'electron'
+import {transitCloseWindow} from '../utils/util.js'
 
 export default {
   name: "Header",
@@ -66,6 +67,9 @@ export default {
         this.currentWindow.setAlwaysOnTop(true);
         this.isTop = true;
       }
+    },
+    closeWindow() {
+      transitCloseWindow()
     }
   }
 }
