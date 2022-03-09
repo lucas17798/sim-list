@@ -1,11 +1,5 @@
 <template>
   <div class="header flex-between">
-<!--    <div>-->
-<!--      <button class="flex-center" title="返回">-->
-<!--        <span>123456</span>-->
-<!--        <i class="icon iconfont flex-center icon-back"></i>-->
-<!--      </button>-->
-<!--    </div>-->
     <div>
       <button class="icon flex-center" title="新窗口">
         <i class="iconfont flex-center icon-add"></i>
@@ -30,11 +24,6 @@
           <i class="iconfont flex-center icon-thepin"></i>
         </button>
       </div>
-<!--      <div>-->
-<!--        <button class="icon flex-center" title="更多">-->
-<!--          <i class="iconfont flex-center icon-more"></i>-->
-<!--        </button>-->
-<!--      </div>-->
       <div>
         <button class="icon flex-center close-window" @click="closeWindow" title="关闭">
           <i class="iconfont flex-center icon-close"></i>
